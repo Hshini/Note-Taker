@@ -1,51 +1,70 @@
 //DEPENDENCIES
-const fs =  require ('fs');
-const express = require ('express')
+const fs = require('fs');
+const express = require('express')
+const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 const path = require('path');
+const { json } = require('express');
 //MIDDLEWARE
 app.use(express.json());
-app.use (express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
+
 //ROUTES
 
-
-app.get('/notes',(req,res)=>
+app.get('/notes', (req, res) =>
     res.sendFile(path.join(__dirname, "/public/notes.html"))
 )
 
 
-app.get('/api/notes',(req,res)=>{
-    fs.readFile( './db/db.json', function(error,dataResults){
-        if(error){
-           throw error
+app.get('/api/notes', (req, res) => {
+    fs.readFile('./db/db.json', function (error, dataResults) {
+        if (error) {
+            throw error
         }
-        else{
+        else {
             res.send(dataResults)
         }
-        
-    } )
-       
+
+    })
+
 }
 )
 
-app.post('/api/notes',(req,res)=>{
-//convert 
-    const data=req.body
-    
-    fs.writeFile( './db/db.json', data, function(error) {
-        if(error){
-            throw error
+app.post('/api/notes', (req, res) => {
+    const { title, text } = req.body
+    let id = {
+        title,
+        text,
+        id: uuidv4()
+    }
+
+    fs.readFile('./db/db.json', function (error, dataResults) {
+        if (error) {
+            console.log(error)
         }
-        data.
-        res.json("File Succesfuly Created")
+        const data= JSON.parse(dataResults)
+        data.push(id)
+
+
+        const dataString = JSON.stringify(data)
+        fs.writeFile('./db/db.json', dataString, function (error) {
+
+            if (error) {
+                throw error
+            }
+            
+
+            res.send("File Succesfuly Created")
+        })
+
     })
 
 })
 
-app.get('*',(req,res)=>{
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'))
 })
 
