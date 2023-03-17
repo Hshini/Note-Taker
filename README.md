@@ -7,7 +7,7 @@ N/A
 ## Usage 
 [Click Here to start](https://watch.screencastify.com/v/m0oWvfFzEGHP4qA3XBk5)<br>
 ![note taker](./Assets/img-1.png)<br>
-![N](./Assets/img-2.png)<br>
+
 ## License
 MIT
 ## Questions
