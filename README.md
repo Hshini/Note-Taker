@@ -5,10 +5,12 @@
  This application will use an Express.js back end and will save and retrieve note data from a JSON file.
 
 ## Usage 
-[Click Here to start](https://watch.screencastify.com/v/m0oWvfFzEGHP4qA3XBk5)<br>
+[Click Here to start](https://note-taker-0011.herokuapp.com/)<br>
 ![note taker](./Assets/img-1.png)<br>
 
 ## License
 MIT
+## Deployment
+https://note-taker-0011.herokuapp.com/
 ## Questions
 halimshini@hotmail.com
