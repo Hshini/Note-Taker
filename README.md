@@ -1,7 +1,7 @@
 # Note Taker
 
 ## Description
- Note Taker that can be used to write and save notes. <br>
+ Note Taker  can be used to write and save notes. <br>
  This application will use an Express.js back end and will save and retrieve note data from a JSON file.
 
 ## Usage 
